@@ -1,1 +1,0 @@
-# letsencrypt Binami helper

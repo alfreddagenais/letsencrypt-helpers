@@ -9,7 +9,7 @@ if [ $? -ne 0 ]
 	ERRORLOG=`tail /var/log/letsencrypt/letsencrypt.log`
 	echo -e "The Lets Encrypt Cert has not been renewed! \n \n" $ERRORLOG | mail -s "Lets Encrypt Cert Alert" postmaster@yourdomain.com
  else
-	/opt/bitnami/ctlscript.sh stop
+	/opt/bitnami/ctlscript.sh restart
 fi
 
 exit 0
