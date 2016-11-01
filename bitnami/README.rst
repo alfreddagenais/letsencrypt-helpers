@@ -235,6 +235,7 @@ Try to run file the file ``letsencrypt-renew.sh``
     # Run sh script
     $ sh letsencrypt-renew.sh 
 
+
 ============
 Letsencrypt Auto-Renewal
 ============
@@ -255,6 +256,38 @@ Include the following content, all in one line:
 
 Save and exit. This will create a new cron job that will execute the letsencrypt-auto renew command every Monday at 2:30 am. The output produced by the command will be piped to a log file located at ``/var/log/letsencrypt-renewal.log``.
 
+============
+Letsencrypt Renewal with Bitnami Console
+============
+
+Try this command 
+.. code-block:: bash
+
+    # Run sh script
+    $ su -c 'sh /root/letsencrypt-renew.sh'
+
+
+
+============
+Letsencrypt Auto-Renewal with Bitnami Console
+============
+
+.. code-block:: bash
+
+    $ sudo crontab -e
+
+Include the following content, all in one line:
+
+.. code-block:: crontab
+
+    30 2 * * 1 su -c 'sh /root/letsencrypt-renew.sh' >> /var/log/letsencrypt-renew.log
+
+Save and exit. This will create a new cron job that will execute the letsencrypt-auto renew command every Monday at 2:30 am. The output produced by the command will be piped to a log file located at ``/var/log/letsencrypt-renewal.log``.
+
+
+============
+Cron Restart
+============
 
 Commands for RHEL/Fedora/CentOS/Scientific Linux user
 
