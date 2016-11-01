@@ -37,6 +37,118 @@ After finishing the steps above, you will get feedback on the console where you 
        expire on 2016-12-31. To obtain a new version of the certificate in
        the future, simply run Let's Encrypt again.
 
+
+Possible error appear 
+.. code-block:: bash
+
+    ....
+    Had a problem while installing Python packages:
+
+    Usage:   
+      pip install [options] <requirement specifier> ...
+      pip install [options] -r <requirements file> ...
+      pip install [options] [-e] <vcs project url> ...
+      pip install [options] [-e] <local project path> ...
+      pip install [options] <archive url/path> ...
+
+    no such option: --no-cache-dir
+
+
+Do this code
+
+.. code-block:: bash
+
+    # check the app you use
+    $ sudo /opt/bitnami/use_yourstack
+
+    # in my case
+    $ sudo /opt/bitnami/use_redash
+
+    # Upgragre pip script
+    $ sudo pip install virtualenv --upgrade
+
+After i could run this code
+
+.. code-block:: bash
+
+    # check the app you use
+    $ ./letsencrypt-auto --agree-dev-preview --server https://acme-v01.api.letsencrypt.org/directory auth
+
+============
+Bitnami Console
+============
+
+What Is `The Bitnami Console <https://docs.bitnami.com/installer/components/bnconsole/>`_ And The Bitnami Stack Environment?
+
+Linux And Mac OS X
+
+.. code-block:: bash
+
+    # Go to bitnami folder
+    $ cd /opt/bitnami
+
+    # Use the app
+    $ ./use_<app_name>
+
+    # In my case
+    $ ./use_redash
+
+
+============
+Redash SSL Installation
+============
+
+Some tim
+
+.. code-block:: bash
+
+    # Restart services
+    $ sudo /opt/bitnami/ctlscript.sh stop
+
+
+Download the current version of the ACME script and extract it on your server:
+
+.. code-block:: bash
+
+    # Get the necessary scripts from github:
+    $ wget https://github.com/letsencrypt/letsencrypt/archive/master.zip
+    $ unzip master.zip
+
+    # Change your active directory to the newly created:
+    $ cd letsencrypt
+
+    # or folder is an other name
+    $ cd certbot-master
+
+Run PIP script update and instalation
+
+.. code-block:: bash
+
+    # Get the update
+    $ sudo pip install --upgrade pip
+
+    # Install script secure
+    $ sudo pip install urllib3[secure] --upgrade
+
+Run Let's Encrypt script standalone
+
+.. code-block:: bash
+
+    # check the app you use
+    $ ./letsencrypt-auto certonly --standalone
+
+
+After finishing the steps above, you will get feedback on the console where you can find your certificates.
+
+.. code-block:: bash
+
+    IMPORTANT NOTES:
+     - Congratulations! Your certificate and chain have been saved at
+       /full/path/domain.com/fullchain.pem. Your cert will
+       expire on 2016-12-31. To obtain a new version of the certificate in
+       the future, simply run Let's Encrypt again.
+
+
 ============
 Bitnami configuation
 ============
@@ -66,7 +178,16 @@ In the ``httpd-vhosts.conf`` I changed the ``<VirtualHost>`` settings of the thr
         Include "/path/to/conf/httpd-app.conf"
     </VirtualHost>
 
-In the  bitnami.conf I changed changed the same lines
+
+.. code-block:: bash
+
+    # Edit the bitnami config of the apache2
+    $ sudo vi /path/to/apps/apache2/conf/httpd-vhosts.conf
+
+    # In my case that would be:
+    $ sudo vi /opt/bitnami/apache2/conf/bitnami/bitnami.conf
+
+In the ``bitnami.conf`` I changed changed the same lines
 
 .. code-block:: bash
 
