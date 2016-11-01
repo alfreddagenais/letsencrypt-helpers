@@ -38,7 +38,8 @@ After finishing the steps above, you will get feedback on the console where you 
        the future, simply run Let's Encrypt again.
 
 
-Possible error appear 
+Possible error appear
+
 .. code-block:: bash
 
     Had a problem while installing Python packages:
@@ -260,7 +261,8 @@ Save and exit. This will create a new cron job that will execute the letsencrypt
 Letsencrypt Renewal with Bitnami Console
 ============
 
-Try this command 
+Try this command
+
 .. code-block:: bash
 
     # Run sh script
